@@ -34,5 +34,28 @@ public class KeyPerformanceIndicator extends AbstractEntity {
     @NotNull
     Double amount;
 
+    public KeyPerformanceIndicator() {
+    }
 
+    public KeyPerformanceIndicator(Date date, String plantName, String kpiType, KPICategory kpiCategory, KPISubCategory kpiSubCategory, Double amount) {
+        this.date = date;
+        this.plantName = plantName;
+        this.kpiType = kpiType;
+        this.kpiCategory = kpiCategory;
+        this.kpiSubCategory = kpiSubCategory;
+        this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "KeyPerformanceIndicator{" +
+                "Id=" + Id +
+                ", date=" + date +
+                ", plantName='" + plantName + '\'' +
+                ", kpiType='" + kpiType + '\'' +
+                ", kpiCategory=" + kpiCategory +
+                ", kpiSubCategory=" + kpiSubCategory +
+                ", amount=" + amount +
+                '}';
+    }
 }

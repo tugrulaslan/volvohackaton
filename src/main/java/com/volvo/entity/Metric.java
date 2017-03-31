@@ -14,4 +14,32 @@ public class Metric {
     @Column
     @NotNull
     String name;
+
+
+    public Metric() {
+    }
+
+    public Metric(String name) {
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Metric{" +
+                "Id=" + Id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

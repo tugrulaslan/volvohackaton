@@ -13,8 +13,8 @@
 <spring:url value="/resources/js/jquery-3.2.0.min.js" var="jqueryLib" />
 <script>
 	function populate($val) {
-		var selectedValue = $("#selectedYear").val();
-		document.getElementById("dashboardForm").submit();
+		var form = document.getElementById("dashboardForm");
+		form.submit();
 	}
 </script>
 <style type="text/css">
@@ -92,8 +92,8 @@ body {
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form:form id="dashboardForm" method="post" modelAttribute="dashboard">
-						<form:hidden id="selectedValue" path="selectedValue"/>
+						<form:form id="dashboardForm" method="post"
+							modelAttribute="dashboard">
 							<table class="table table-hover">
 								<thead>
 									<tr>
@@ -111,18 +111,18 @@ body {
 								</thead>
 								<tbody>
 									<tr>
-										<td><form:select id="selectedYear" path="year" items="${yearData}"
-												onchange="populate(value)" /></td>
-										<td><form:select path="month">
+										<td><form:select path="year" items="${yearData}"
+												onchange="populate()" /></td>
+										<td><form:select path="month" onchange="populate()">
 												<form:options items="${monthData}" />
 											</form:select></td>
-										<td><form:select path="valueType">
+										<td><form:select path="valueType" onchange="populate()">
 												<form:options items="${valueTypeData}" />
 											</form:select></td>
-										<td><form:select path="plantRegion">
+										<td><form:select path="plantRegion" onchange="populate()">
 												<form:options items="${plantRegionData}" />
 											</form:select></td>
-										<td><form:select path="orgLevel">
+										<td><form:select path="orgLevel" onchange="populate()">
 												<form:options items="${orgLevelData}" />
 											</form:select></td>
 									</tr>

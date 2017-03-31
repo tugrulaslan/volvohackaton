@@ -4,6 +4,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.DailyRollingFileAppender;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -14,8 +18,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.volvo.domain.MainDashboardDomain;
 
@@ -64,9 +66,14 @@ public class MainDashboardController {
 	private MessageSource messageSource;
 
 	@RequestMapping(value = "/maindashboard", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
+	public String index(Locale locale, Model model, HttpSession httpSession) {
 		logger.info("creating index page");
-		MainDashboardDomain dashboard = new MainDashboardDomain();
+		MainDashboardDomain sessionObject = (MainDashboardDomain) httpSession.getAttribute("dashboard");
+		MainDashboardDomain dashboard;
+		if (sessionObject != null)
+			dashboard = sessionObject;
+		else
+			dashboard = new MainDashboardDomain();
 		model.addAttribute("locale", LocaleContextHolder.getLocale());
 		model.addAttribute("dashboard", dashboard);
 		model.addAttribute("yearData", yearData);
@@ -74,14 +81,16 @@ public class MainDashboardController {
 		model.addAttribute("valueTypeData", valueTypeData);
 		model.addAttribute("plantRegionData", plantRegionData);
 		model.addAttribute("orgLevelData", orgLevelData);
+		httpSession.removeAttribute("dashboard");
 		return "maindashboard";
 	}
 
 	@RequestMapping(value = "/maindashboard", method = RequestMethod.POST)
-	public String indexSubmit(@RequestParam(value = "selectedValue") String param, @ModelAttribute("dashboard") MainDashboardDomain dashboardDomain, BindingResult result,
-			SessionStatus status, Locale locale, Model model) {
-		logger.info("retrieved object " + dashboardDomain.toString());
-		return "maindashboard";
+	public String indexSubmit(@ModelAttribute("dashboard") MainDashboardDomain dashboard, BindingResult bindingResult,
+			Locale locale, Model model, HttpSession httpSession) {
+		logger.info("retrieved object " + dashboard.toString());
+		httpSession.setAttribute("dashboard", dashboard);
+		return "redirect:/maindashboard";
 	}
 
 }

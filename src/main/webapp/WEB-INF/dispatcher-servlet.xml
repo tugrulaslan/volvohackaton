@@ -92,5 +92,4 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd
 			<property name="paramName" value="lang" />
 		</bean>
 	</mvc:interceptors>
-
 </beans>

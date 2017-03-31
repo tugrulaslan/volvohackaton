@@ -7,7 +7,6 @@ public class MainDashboardDomain {
 	private String valueType;
 	private String plantRegion;
 	private String orgLevel;
-	private String selectedValue;
 
 	public MainDashboardDomain() {
 
@@ -61,19 +60,11 @@ public class MainDashboardDomain {
 	public void setOrgLevel(String orgLevel) {
 		this.orgLevel = orgLevel;
 	}
-	
-	public String getSelectedValue() {
-		return selectedValue;
-	}
-
-	public void setSelectedValue(String selectedValue) {
-		this.selectedValue = selectedValue;
-	}
 
 	@Override
 	public String toString() {
 		return "MainDashboardDomain [year=" + year + ", month=" + month + ", valueType=" + valueType + ", plantRegion="
-				+ plantRegion + ", orgLevel=" + orgLevel + ", selectedValue=" + selectedValue + "]";
+				+ plantRegion + ", orgLevel=" + orgLevel + "]";
 	}
 
 }

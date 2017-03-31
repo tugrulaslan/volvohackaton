@@ -15,4 +15,18 @@ public class KPICategory {
     String name;
 
 
+    public KPICategory() {
+    }
+
+    public KPICategory(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "KPICategory{" +
+                "Id=" + Id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

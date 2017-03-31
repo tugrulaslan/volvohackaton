@@ -1,13 +1,8 @@
 package com.volvo.controller;
 
-import java.util.Locale;
-import java.util.Map;
-import java.util.TreeMap;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.log4j.DailyRollingFileAppender;
+import com.volvo.dao.MetricDAO;
+import com.volvo.domain.MainDashboardDomain;
+import com.volvo.entity.Metric;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -19,7 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.volvo.domain.MainDashboardDomain;
+import javax.servlet.http.HttpSession;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Controller
 public class MainDashboardController {
@@ -65,6 +63,10 @@ public class MainDashboardController {
 	@Autowired
 	private MessageSource messageSource;
 
+
+	@Autowired
+	private MetricDAO metricDAO;
+
 	@RequestMapping(value = "/maindashboard", method = RequestMethod.GET)
 	public String index(Locale locale, Model model, HttpSession httpSession) {
 		logger.info("creating index page");
@@ -81,6 +83,20 @@ public class MainDashboardController {
 		model.addAttribute("valueTypeData", valueTypeData);
 		model.addAttribute("plantRegionData", plantRegionData);
 		model.addAttribute("orgLevelData", orgLevelData);
+		//Target t = new Target(new KPISubCategory("Lost Time Accident Rate",new KPICategory("Safety"),new Metric("accidents/hours worked x 20 0000")),5.0);
+		Metric m = new Metric("aa");
+
+		metricDAO.save(m);
+		m.setName("b");
+		metricDAO.update(m);
+		metricDAO.delete(m);
+		Metric m3 = new Metric("vv");
+		metricDAO.save(m3);
+		Metric m2 = metricDAO.findById(m3.getId());
+		System.out.println(m2);
+		System.out.println(metricDAO.findAll());
+		System.out.println(metricDAO.count());
+
 		httpSession.removeAttribute("dashboard");
 		return "maindashboard";
 	}

@@ -18,4 +18,45 @@ public class Target {
     @Column
     @NotNull
     Double targetAmount;
+
+    public Target() {
+    }
+
+    public Target(KPISubCategory kpiSubCategory, Double targetAmount) {
+        this.kpiSubCategory = kpiSubCategory;
+        this.targetAmount = targetAmount;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public KPISubCategory getKpiSubCategory() {
+        return kpiSubCategory;
+    }
+
+    public void setKpiSubCategory(KPISubCategory kpiSubCategory) {
+        this.kpiSubCategory = kpiSubCategory;
+    }
+
+    public Double getTargetAmount() {
+        return targetAmount;
+    }
+
+    public void setTargetAmount(Double targetAmount) {
+        this.targetAmount = targetAmount;
+    }
+
+    @Override
+    public String toString() {
+        return "Target{" +
+                "Id=" + Id +
+                ", kpiSubCategory=" + kpiSubCategory +
+                ", targetAmount=" + targetAmount +
+                '}';
+    }
 }

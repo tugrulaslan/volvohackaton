@@ -16,7 +16,6 @@ public class IndexController {
 	@Autowired
 	private MessageSource messageSource;
 
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Locale locale, Model model) {
 
@@ -27,10 +26,9 @@ public class IndexController {
 		model.addAttribute("locale", currentLocale);
 		model.addAttribute("language", locale.getLanguage());
 
-		//System.out.println(service1.findAll(1));
-		//System.out.println(service1.hepsini());
+		// System.out.println(service1.findAll(1));
+		// System.out.println(service1.hepsini());
 
-
-		return "index";
+		return "redirect:/maindashboard";
 	}
 }

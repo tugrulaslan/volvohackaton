@@ -77,6 +77,7 @@ public class MainDashboardController {
 		} else {
 			dashboard = new MainDashboardDomain();
 		}
+		SafetyComponent safetyComponent = dashboardService.getSafetyComponent(2017, "Wroclaw");
 		model.addAttribute("locale", LocaleContextHolder.getLocale());
 		model.addAttribute("dashboard", dashboard);
 		model.addAttribute("yearData", yearData);
@@ -84,8 +85,9 @@ public class MainDashboardController {
 		model.addAttribute("valueTypeData", valueTypeData);
 		model.addAttribute("plantRegionData", plantRegionData);
 		model.addAttribute("orgLevelData", orgLevelData);
+		model.addAttribute("resultObj", safetyComponent);
 		httpSession.removeAttribute("dashboard");
-		SafetyComponent safetyComponent = dashboardService.getSafetyComponent(2016,"Mexico");
+
 		return "maindashboard";
 	}
 

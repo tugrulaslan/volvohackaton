@@ -87,7 +87,7 @@ public class MainDashboardController {
 		model.addAttribute("orgLevelData", orgLevelData);
 		model.addAttribute("resultObj", safetyComponent);
 		httpSession.removeAttribute("dashboard");
-
+		dashboardService.getSafetyComponent(2017,"Wroclaw");
 		return "maindashboard";
 	}
 

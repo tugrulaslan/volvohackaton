@@ -35,7 +35,6 @@ public class KeyPerformanceIndicator extends AbstractEntity {
 
 	@Transient
 	private Map<String, String> orgLevelData = new TreeMap<String, String>();
-	
 
 	public Map<String, String> getOrgLevelData() {
 		Map<String, String> data = new HashMap<>();
@@ -50,6 +49,14 @@ public class KeyPerformanceIndicator extends AbstractEntity {
 	Double amount;
 
 	public KeyPerformanceIndicator() {
+	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
 	}
 
 	public KeyPerformanceIndicator(Date date, String plantName, String kpiType, KPICategory kpiCategory,

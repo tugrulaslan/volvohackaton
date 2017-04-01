@@ -79,6 +79,36 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Plant Name</th>
+						<th>KPI Type</th>
+						<th>KPI Category</th>
+						<th>KPI Sub Category</th>
+						<th>Amount</th>
+						<th><spring:message code="crud.operations.delete" /></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${allKPI}" var="var">
+						<tr>
+							<td>${var.id}</td>
+							<td>${var.plantName}</td>
+							<td>${var.kpiType}</td>
+							<td>${var.kpiCategory.name}</td>
+							<td>${var.kpiSubCategory.name}</td>
+							<td>${var.amount}</td>
+							<td><a href="<c:url value="/kpi/${var.id}" />"><spring:message
+										code="crud.operations.delete" /></a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

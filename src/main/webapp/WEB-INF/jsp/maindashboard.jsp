@@ -5,7 +5,7 @@
 <html>
 <head>
 
-<script>
+<script language="JavaScript" type="text/javascript">
 	function populate() {
 		var form = document.getElementById("dashboardForm");
 		form.submit();
@@ -30,66 +30,81 @@
 <body>
 	<div class="jumbotron">
 		<div class="container-fluid">
-			<div class="panel-group">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<h2>
-							<spring:message code="maindashboard.page.filterpanel.title" />
-						</h2>
-					</div>
-				</div>
-
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<form:form id="dashboardForm" method="post"
-							modelAttribute="dashboard">
-							<div class="table-responsive">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<th><spring:message
-													code="maindashboard.page.filterpanel.year" /></th>
-											<th><spring:message
-													code="maindashboard.page.filterpanel.month" /></th>
-											<th><spring:message
-													code="maindashboard.page.filterpanel.valuetype" /></th>
-											<th><spring:message
-													code="maindashboard.page.filterpanel.plantregion" /></th>
-											<th><spring:message
-													code="maindashboard.page.filterpanel.orglevel" /></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><form:select path="year" items="${yearData}"
-													onchange="populate()" /></td>
-											<td><form:select path="month" onchange="populate()">
-													<form:options items="${monthData}" />
-												</form:select></td>
-											<td><form:select path="valueType" onchange="populate()">
-													<form:options items="${valueTypeData}" />
-												</form:select></td>
-											<td><form:select path="plantRegion"
-													onchange="populate()">
-													<form:options items="${plantRegionData}" />
-												</form:select></td>
-											<td><form:select path="orgLevel" onchange="populate()">
-													<form:options items="${orgLevelData}" />
-												</form:select></td>
-										</tr>
-									</tbody>
-								</table>
+			<h2>
+				<p class="text-center">
+					<spring:message code="maindashboard.page.filterpanel.title" />
+				</p>
+			</h2>
+			<form:form id="dashboardForm" method="post"
+				modelAttribute="dashboard">
+				<div class="row">
+					<div class="col-md-5ths col-xs-6">
+						<div class="row">
+							<div class="col-xs-6 col-md-4">
+								<spring:message code="maindashboard.page.filterpanel.year" />
 							</div>
-						</form:form>
+							<div class="col-xs-6 col-md-4">
+								<form:select path="year" items="${yearData}"
+									onchange="populate()" class="selectpicker" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5ths col-xs-6">
+						<div class="row">
+							<div class="col-xs-6 col-md-4">
+								<spring:message code="maindashboard.page.filterpanel.month" />
+							</div>
+							<div class="col-xs-6 col-md-4">
+								<form:select path="month" onchange="populate()"
+									class="selectpicker">
+									<form:options items="${monthData}" />
+								</form:select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5ths col-xs-6">
+						<spring:message code="maindashboard.page.filterpanel.valuetype" />
+						<form:select path="valueType" onchange="populate()"
+							class="selectpicker">
+							<form:options items="${valueTypeData}" />
+						</form:select>
+					</div>
+					<div class="col-md-5ths col-xs-6">
+						<div class="row">
+							<div class="col-xs-6 col-md-4">
+								<spring:message
+									code="maindashboard.page.filterpanel.plantregion" />
+							</div>
+							<div class="col-xs-6 col-md-4">
+								<form:select path="plantRegion" onchange="populate()"
+									class="selectpicker">
+									<form:options items="${plantRegionData}" />
+								</form:select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5ths col-xs-6">
+						<div class="row">
+							<div class="col-xs-6 col-md-4">
+								<spring:message code="maindashboard.page.filterpanel.orglevel" />
+							</div>
+							<div class="col-xs-6 col-md-4">
+								<form:select path="orgLevel" onchange="populate()"
+									class="selectpicker">
+									<form:options items="${orgLevelData}" />
+								</form:select>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
+			</form:form>
 		</div>
 	</div>
 	<div class="container-fluid" style="${showDataPanel}">
-		<div class="panel-group" id="accordion">
-			<div class="row">
-				<div class="col-xs-4">
+		<div class="row">
+			<div class="panel-group" id="accordion">
+				<!-- Safety Panel Begin -->
+				<div class="col-xs-6 col-md-4">
 					<div class="panel panel-info" id="safetyPanelCollapse">
 						<div class="panel-heading">
 							<h4 class="panel-title">
@@ -101,298 +116,294 @@
 						</div>
 						<div id="safetyPanel" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<center>
-									<b><spring:message
-											code="maindashboard.page.safety.panel.header" /></b>
-								</center>
-								<div class="container-fluid">
-									<div class="row">
-										<!-- Vertical Alignment -->
-										<div class="col-lg-6">
-											<div class="container-fluid">
-												<div class="row">
-													<!-- Horizontal Alignment -->
-													<div class="col-lg-12">${dashboard.valueType}</div>
-													<div class="col-lg-12">fancy bar goes here</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="container-fluid">
-												<div class="row">
-													<div class="col-lg-12">
-														<spring:message code="maindashboard.page.avgyear" />
-													</div>
-													<div class="col-lg-12">
-														<div class="col-lg-6">
-															<spring:message code="maindashboard.page.target" />
-														</div>
-														<div class="col-lg-6">TARGET%</div>
-													</div>
-												</div>
-											</div>
+								<strong><p class="text-center">
+										<spring:message code="maindashboard.page.safety.panel.header" />
+									</p></strong>
+								<!-- Safety Panel Content Begin -->
+								<div class="row">
+									<div class="col-xs-6">
+										<p class="text-center">
+											<strong>${dashboard.valueType}</strong>
+										</p>
+										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
+											<div class="gauge-arrow" data-percentage="80"></div>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="panel panel-info" id="qualityPanelCollapse">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-target="#qualityPanel"
-							href="#qualityPanel"> <spring:message
-								code="maindashboard.page.quality.panel.title" />
-						</a>
-					</h4>
-				</div>
-				<div id="qualityPanel" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<center>
-							<b><spring:message
-									code="maindashboard.page.quality.panel.header" /></b>
-						</center>
-						<div class="container-fluid">
-							<div class="row">
-								<!-- Vertical Alignment -->
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<!-- Horizontal Alignment -->
-											<div class="col-lg-12">${dashboard.valueType}</div>
-											<div class="col-lg-12">fancy bar goes here</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-lg-12">
+									<div class="col-xs-6">
+										<strong><p class="text-right">
 												<spring:message code="maindashboard.page.avgyear" />
-											</div>
-											<div class="col-lg-12">
-												<div class="col-lg-6">
+											</p></strong>
+										<div class="row">
+											<div class="col-xs-6">
+												<p class="text-right">
 													<spring:message code="maindashboard.page.target" />
-												</div>
-												<div class="col-lg-6">TARGET%</div>
+												</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">80%</p>
 											</div>
 										</div>
 									</div>
 								</div>
+								<!-- Safety Panel Content End -->
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="panel panel-info" id="deliveryPanelCollapse">
-				<div class="panel-heading">
-
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-target="#deliveryPanel"
-							href="#deliveryPanel"> <spring:message
-								code="maindashboard.page.delivery.panel.title" />
-						</a>
-					</h4>
-				</div>
-				<div id="deliveryPanel" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<center>
-							<b><spring:message
-									code="maindashboard.page.delivery.panel.header" /></b>
-						</center>
-						<div class="container-fluid">
-							<div class="row">
-								<!-- Vertical Alignment -->
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<!-- Horizontal Alignment -->
-											<div class="col-lg-12">${dashboard.valueType}</div>
-											<div class="col-lg-12">fancy bar goes here</div>
+				<!-- Safety Panel End -->
+				<!-- Quality Panel Begin -->
+				<div class="col-xs-6 col-md-4">
+					<div class="panel panel-info" id="qualityPanelCollapse">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-target="#qualityPanel"
+									href="#qualityPanel"> <spring:message
+										code="maindashboard.page.quality.panel.title" />
+								</a>
+							</h4>
+						</div>
+						<div id="qualityPanel" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<strong><p class="text-center">
+										<spring:message code="maindashboard.page.quality.panel.header" />
+									</p></strong>
+								<!-- Quality Panel Content Begin -->
+								<div class="row">
+									<div class="col-xs-6">
+										<p class="text-center">
+											<strong>${dashboard.valueType}</strong>
+										</p>
+										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
+											<div class="gauge-arrow" data-percentage="40"></div>
 										</div>
 									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-lg-12">
+									<div class="col-xs-6">
+										<strong><p class="text-right">
 												<spring:message code="maindashboard.page.avgyear" />
-											</div>
-											<div class="col-lg-12">
-												<div class="col-lg-6">
+											</p></strong>
+										<div class="row">
+											<div class="col-xs-6">
+												<p class="text-right">
 													<spring:message code="maindashboard.page.target" />
-												</div>
-												<div class="col-lg-6">TARGET%</div>
+												</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">40%</p>
 											</div>
 										</div>
 									</div>
 								</div>
+								<!-- Quality Panel Content End -->
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="panel panel-info" id="costPanelCollapse">
-				<div class="panel-heading">
-
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-target="#costPanel"
-							href="#qualityPanel"> <spring:message
-								code="maindashboard.page.cost.panel.title" />
-						</a>
-					</h4>
-				</div>
-				<div id="costPanel" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<center>
-							<b><spring:message
-									code="maindashboard.page.cost.panel.header"
-									arguments="${dashboard.valueType}" /></b>
-						</center>
-						<div class="container-fluid">
-							<div class="row">
-								<!-- Vertical Alignment -->
-								<div class="col-lg-6">
-									<div class="container-fluid">
+				<!-- Quality Panel End -->
+				<!-- Delivery Panel Begin -->
+				<div class="col-xs-6 col-md-4">
+					<div class="panel panel-info" id="deliveryPanelCollapse">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-target="#deliveryPanel"
+									href="#qualityPanel"> <spring:message
+										code="maindashboard.page.delivery.panel.title" />
+								</a>
+							</h4>
+						</div>
+						<div id="deliveryPanel" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<strong><p class="text-center">
+										<spring:message
+											code="maindashboard.page.delivery.panel.header" />
+									</p></strong>
+								<!-- Delivery Panel Content Begin -->
+								<div class="row">
+									<div class="col-xs-6">
+										<p class="text-center">
+											<strong>${dashboard.valueType}</strong>
+										</p>
+										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
+											<div class="gauge-arrow" data-percentage="15"></div>
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<strong><p class="text-right">
+												<spring:message code="maindashboard.page.avgyear" />
+											</p></strong>
 										<div class="row">
-											<!-- Horizontal Alignment -->
-											<div class="col-lg-12">${dashboard.valueType}</div>
-											<div class="col-lg-12">fancy bar goes here</div>
+											<div class="col-xs-6">
+												<p class="text-right">
+													<spring:message code="maindashboard.page.target" />
+												</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">15%</p>
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-lg-12">
+								<!-- Delivery Panel Content End -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Delivery Panel End -->
+				<!-- Cost Panel Begin -->
+				<div class="col-xs-6 col-md-4">
+					<div class="panel panel-info" id="costPanelCollapse">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-target="#costPanel"
+									href="#costPanel"> <spring:message
+										code="maindashboard.page.cost.panel.title" />
+								</a>
+							</h4>
+						</div>
+						<div id="costPanel" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<strong><p class="text-center">
+										<spring:message code="maindashboard.page.cost.panel.header"
+											arguments="${dashboard.valueType}" />
+									</p></strong>
+								<!-- Cost Panel Content Begin -->
+								<div class="row">
+									<div class="col-xs-6">
+										<p class="text-center">
+											<strong>${dashboard.valueType}</strong>
+										</p>
+										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
+											<div class="gauge-arrow" data-percentage="68"></div>
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<strong><p class="text-right">
 												<spring:message code="maindashboard.page.fy" />
-											</div>
-											<div class="col-lg-12">
-												<div class="col-lg-6">
+											</p></strong>
+										<div class="row">
+											<div class="col-xs-6">
+												<p class="text-right">
 													<spring:message code="maindashboard.page.target" />
-												</div>
-												<div class="col-lg-6">TARGET%</div>
+												</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">68%</p>
 											</div>
 										</div>
 									</div>
 								</div>
+								<!-- Cost Panel Content End -->
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="panel panel-info" id="environmentPanelCollapse">
-				<div class="panel-heading">
-
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-target="#environmentPanel"
-							href="#environmentPanel"> <spring:message
-								code="maindashboard.page.environment.panel.title" />
-						</a>
-					</h4>
-				</div>
-				<div id="environmentPanel" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<center>
-							<b><spring:message
-									code="maindashboard.page.environment.panel.header" /></b>
-						</center>
-						<div class="container-fluid">
-							<div class="row">
-								<!-- Vertical Alignment -->
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<!-- Horizontal Alignment -->
-											<div class="col-lg-12">${dashboard.valueType}</div>
-											<div class="col-lg-12">fancy bar goes here</div>
+				<!-- Cost Panel End -->
+				<!-- Environment Panel Begin -->
+				<div class="col-xs-6 col-md-4">
+					<div class="panel panel-info" id="environmentPanelCollapse">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-target="#environmentPanel"
+									href="#environmentPanel"> <spring:message
+										code="maindashboard.page.environment.panel.title" />
+								</a>
+							</h4>
+						</div>
+						<div id="environmentPanel" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<strong><p class="text-center">
+										<spring:message
+											code="maindashboard.page.environment.panel.header"
+											arguments="${dashboard.valueType}" />
+									</p></strong>
+								<!-- Environment Panel Content Begin -->
+								<div class="row">
+									<div class="col-xs-6">
+										<p class="text-center">
+											<strong>${dashboard.valueType}</strong>
+										</p>
+										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
+											<div class="gauge-arrow" data-percentage="77"></div>
 										</div>
 									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-lg-12">
+									<div class="col-xs-6">
+										<strong><p class="text-right">
 												<spring:message arguments="${dashboard.valueType}"
 													code="maindashboard.page.mr" />
-											</div>
-											<div class="col-lg-12">
-												<div class="col-lg-6">
+											</p></strong>
+										<div class="row">
+											<div class="col-xs-6">
+												<p class="text-right">
 													<spring:message code="maindashboard.page.target" />
-												</div>
-												<div class="col-lg-6">TARGET%</div>
+												</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">77%</p>
 											</div>
 										</div>
 									</div>
 								</div>
+								<!-- Environment Panel Content End -->
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="panel panel-info" id="peoplePanelCollapse">
-				<div class="panel-heading">
-
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-target="#peoplePanel"
-							href="#peopleyPanel"> <spring:message
-								code="maindashboard.page.people.panel.title" />
-						</a>
-					</h4>
-				</div>
-				<div id="peoplePanel" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<center>
-							<b><spring:message
-									code="maindashboard.page.people.panel.header" /></b>
-						</center>
-						<div class="container-fluid">
-							<div class="row">
-								<!-- Vertical Alignment -->
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<!-- Horizontal Alignment -->
-											<div class="col-lg-12">${dashboard.valueType}</div>
-											<div class="col-lg-12">fancy bar goes here</div>
+				<!-- Environment Panel End -->
+				<!-- People Panel Begin -->
+				<div class="col-xs-6 col-md-4">
+					<div class="panel panel-info" id="peoplePanelCollapse">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-target="#peoplePanel"
+									href="#peoplePanel"> <spring:message
+										code="maindashboard.page.people.panel.title" />
+								</a>
+							</h4>
+						</div>
+						<div id="peoplePanel" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<strong><p class="text-center">
+										<spring:message code="maindashboard.page.people.panel.header"
+											arguments="${dashboard.valueType}" />
+									</p></strong>
+								<!-- People Panel Content Begin -->
+								<div class="row">
+									<div class="col-xs-6">
+										<p class="text-center">
+											<strong>${dashboard.valueType}</strong>
+										</p>
+										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
+											<div class="gauge-arrow" data-percentage="7"></div>
 										</div>
 									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-lg-12">
+									<div class="col-xs-6">
+										<strong><p class="text-right">
 												<spring:message code="maindashboard.page.fy" />
-											</div>
-											<div class="col-lg-12">
-												<div class="col-lg-6">
+											</p></strong>
+										<div class="row">
+											<div class="col-xs-6">
+												<p class="text-right">
 													<spring:message code="maindashboard.page.target" />
-												</div>
-												<div class="col-lg-6">TARGET%</div>
+												</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">7%</p>
 											</div>
 										</div>
 									</div>
 								</div>
+								<!-- People Panel Content End -->
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- People Panel End -->
 			</div>
 		</div>
 	</div>
-	</div>
-	</div>
+	<script type="text/javascript">
+	$(function () {
+		$('#gaugeDemo .gauge-arrow').cmGauge();
+	});
+</script>
 </body>
 </html>

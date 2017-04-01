@@ -10,44 +10,75 @@
 }
 
 .form-signin {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
 }
 
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-    margin-bottom: 10px;
+.form-signin .form-signin-heading, .form-signin .checkbox {
+	margin-bottom: 10px;
 }
 
 .form-signin .checkbox {
-    font-weight: normal;
+	font-weight: normal;
 }
 
 .form-signin .form-control {
-    position: relative;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 16px;
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
 }
 
 .form-signin .form-control:focus {
-    z-index: 2;
+	z-index: 2;
 }
 
 .form-signin input {
-    margin-top: 10px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+	margin-top: 10px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
 }
 
 .form-signin button {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .has-error {
-    color: red
+	color: red
 }
+
+.col-xs-5ths, .col-sm-5ths, .col-md-5ths, .col-lg-5ths {
+	position: relative;
+	min-height: 1px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-xs-5ths {
+	width: 20%;
+	float: left;
+}
+
+@media ( min-width : 768px) {
+	.col-sm-5ths {
+		width: 20%;
+		float: left;
+	}
+}
+
+@media ( min-width : 992px) {
+	.col-md-5ths {
+		width: 20%;
+		float: left;
+	}
+}
+
+@media ( min-width : 1200px) {
+	.col-lg-5ths {
+		width: 20%;
+		float: left;
+	}

@@ -10,6 +10,15 @@
 	var="bootstrapCSS" />
 <spring:url value="/resources/bootstrap/js/bootstrap.js"
 	var="bootstrapJS" />
+
+<spring:url value="/resources/bootstrap-select/css/bootstrap-select.css"
+	var="bootstrapSelectCSS" />
+<spring:url value="/resources/bootstrap-select/js/bootstrap-select.js"
+	var="bootstrapSelectJS" />
+
+<spring:url value="/resources/cmgauge/css/cmGauge.css" var="cmGaugeCSS" />
+<spring:url value="/resources/cmgauge/js/cmGauge.js" var="cmGaugeJS" />
+
 <spring:url value="/resources/js/jquery-3.2.0.min.js" var="jqueryLib" />
 <head>
 <meta charset="utf-8">
@@ -21,6 +30,8 @@
 <!-- Bootstrap core CSS -->
 <link href="${bootstrapCSS}" rel="stylesheet" />
 <link href="${defaultStylesCSS}" rel="stylesheet" />
+<link href="${bootstrapSelectCSS}" rel="stylesheet" />
+<link href="${cmGaugeCSS}" rel="stylesheet" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -58,5 +69,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="${jqueryLib}"></script>
 	<script src="${bootstrapJS}"></script>
+	<script src="${bootstrapSelectJS}"></script>
+	<script src="${cmGaugeJS}"></script>
 </body>
 </html>

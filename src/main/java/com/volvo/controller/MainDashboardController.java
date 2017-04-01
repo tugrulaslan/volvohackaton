@@ -1,7 +1,7 @@
 package com.volvo.controller;
 
-import com.volvo.dao.MetricDAO;
 import com.volvo.domain.MainDashboardDomain;
+import com.volvo.service.DashboardService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -63,7 +63,7 @@ public class MainDashboardController {
 	private MessageSource messageSource;
 
 	@Autowired
-	private MetricDAO metricDAO;
+	private DashboardService dashboardService;
 
 	@RequestMapping(value = "/maindashboard", method = RequestMethod.GET)
 	public String index(Locale locale, Model model, HttpSession httpSession) {
@@ -86,6 +86,7 @@ public class MainDashboardController {
 		model.addAttribute("plantRegionData", plantRegionData);
 		model.addAttribute("orgLevelData", orgLevelData);
 		httpSession.removeAttribute("dashboard");
+		dashboardService.getSafetyComponent(2017,"Wroclaw");
 		return "maindashboard";
 	}
 

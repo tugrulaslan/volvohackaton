@@ -20,4 +20,5 @@ public interface MetricDAO {
     List findAll();
 
     long count();
+
 }

@@ -17,6 +17,10 @@ public class Target {
 
     @Column
     @NotNull
+    String Year;
+
+    @Column
+    @NotNull
     Double targetAmount;
 
     public Target() {
@@ -49,6 +53,14 @@ public class Target {
 
     public void setTargetAmount(Double targetAmount) {
         this.targetAmount = targetAmount;
+    }
+
+    public String getYear() {
+        return Year;
+    }
+
+    public void setYear(String year) {
+        Year = year;
     }
 
     @Override

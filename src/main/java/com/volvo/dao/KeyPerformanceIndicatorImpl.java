@@ -63,4 +63,11 @@ public class KeyPerformanceIndicatorImpl implements KeyPerformanceIndicatorDAO {
         logger.info("getting count " + count);
         return count;
     }
+
+    @Override
+    public List<KeyPerformanceIndicator> getKeyPerformanceIndicator(Integer year, String plantName) {
+        Session session = sessionFactory.getCurrentSession();
+        return  (List<KeyPerformanceIndicator>) session.createQuery("from KeyPerformanceIndicator where plantName=? and year=").setParameter(0, "Wroclaw").list();
+
+    }
 }

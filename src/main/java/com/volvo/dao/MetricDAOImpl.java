@@ -1,5 +1,6 @@
 package com.volvo.dao;
 
+import com.volvo.entity.KPISubCategory;
 import com.volvo.entity.Metric;
 import com.volvo.entity.Target;
 import org.apache.log4j.Logger;

@@ -20,4 +20,6 @@ public interface KeyPerformanceIndicatorDAO {
     List findAll();
 
     long count();
+
+    List<KeyPerformanceIndicator> getKeyPerformanceIndicator(Integer year, String plantName);
 }

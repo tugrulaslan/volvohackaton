@@ -2,12 +2,15 @@ package com.volvo.dao;
 
 import com.volvo.entity.KeyPerformanceIndicator;
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Transactional
@@ -67,7 +70,14 @@ public class KeyPerformanceIndicatorImpl implements KeyPerformanceIndicatorDAO {
     @Override
     public List<KeyPerformanceIndicator> getKeyPerformanceIndicator(Integer year, String plantName) {
         Session session = sessionFactory.getCurrentSession();
-        return  (List<KeyPerformanceIndicator>) session.createQuery("from KeyPerformanceIndicator where plantName=? and year=").setParameter(0, "Wroclaw").list();
+        Query q = session.createQuery("from KeyPerformanceIndicator where plantName=? and extract(Year from date)=?");
+        q.setParameter(0, plantName);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        q.setParameter(1, cal.get(1));
+
+        return (List<KeyPerformanceIndicator>) q.list();
+
 
     }
 }

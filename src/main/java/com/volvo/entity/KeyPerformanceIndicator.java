@@ -46,6 +46,14 @@ public class KeyPerformanceIndicator extends AbstractEntity {
         this.amount = amount;
     }
 
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
     public Date getDate() {
         return date;
     }

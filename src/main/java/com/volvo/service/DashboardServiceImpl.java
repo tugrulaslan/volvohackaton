@@ -32,7 +32,7 @@ public class DashboardServiceImpl implements DashboardService {
             }
 
 
-            s.setCurrentValue(amount);
+            s.setCurrentValue((amount/1000000)*200000);
             KeyPerformanceIndicator keyPerformanceIndicator = keyPerformanceIndicators.get(0);
             s.setUnit(keyPerformanceIndicator.getKpiSubCategory().getMetric().getName());
             Set<Target> target = keyPerformanceIndicator.getKpiSubCategory().getTarget();

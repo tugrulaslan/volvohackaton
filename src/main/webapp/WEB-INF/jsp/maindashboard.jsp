@@ -142,7 +142,7 @@
 												</p>
 											</div>
 											<div class="col-xs-6">
-												<p class="text-right">${resultObj.targetThisYear}%</p>
+												<p class="text-right">${resultObj.targetThisYear}</p>
 											</div>
 											<div class="col-xs-6">
 												<p class="text-right">2016</p>

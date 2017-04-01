@@ -42,9 +42,8 @@ public class MetricController {
 		return "redirect:/metrics";
 	}
 
-	@RequestMapping(value = "/metrics/{id}", method = RequestMethod.GET)
-	public String indexSubmit(@PathVariable("id") int id, BindingResult bindingResult, Locale locale, Model model,
-			HttpSession httpSession) {
+	@RequestMapping(value = "/metrics/{id}")
+	public String indexSubmit(@PathVariable("id") int id) {
 		logger.info("retrieved id " + id);
 		Metric entity = metricDAO.findById(id);
 		logger.info("deleting the metric  " + entity.toString());

@@ -6,7 +6,8 @@
 	<http auto-config="true">
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/registration" access="permitAll" />
-		<intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
+		<!-- <intercept-url pattern="/*" access="hasRole('ROLE_USER')" /> -->
+		<intercept-url pattern="/*" access="permitAll" />
 		<!-- <intercept-url pattern="/rest/**" access="hasRole('ADMIN')" /> -->
 		<form-login login-page="/login" default-target-url="/maindashboard"
 			authentication-failure-url="/login?error" username-parameter="username"
@@ -22,7 +23,7 @@
 	</authentication-manager>
 
 	<beans:bean id="userDetailsServiceImpl" class="com.volvo.service.UserDetailsServiceImpl"></beans:bean>
-	
+
 	<beans:bean id="encoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="11" />

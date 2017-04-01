@@ -21,55 +21,64 @@
 </head>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 <body>
-	<div class="container-fluid" style="padding-top: 55px;">
-		<h3>
-			<p class="text-center">
-				<spring:message code="kpi.page.newmetricpanel.heading" />
-			</p>
-		</h3>
-		<form:form id="kpiForm" method="post" modelAttribute="kpiObj"
-			class="form-horizontal">
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-2 control-label"><spring:message
-						code="kpi.page.table.plantName" /></label>
-				<div class="col-sm-10">
-					<form:select path="orgLevelData" items="${kpiTypeData}" cssClass="form-control" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-2 control-label"><spring:message
-						code="kpi.page.table.kpisubCat" /></label>
-				<div class="col-sm-10">
-					<form:select path="kpiSubCategory" class="form-control">
-						<form:options items="${kpiSubCategoryData}" itemValue="Id"
-							itemLabel="name" />
-					</form:select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-2 control-label"><spring:message
-						code="kpi.page.table.kpiCat" /></label>
-				<div class="col-sm-10">
-					<form:select path="kpiCategory" class="form-control">
-						<form:options items="${kpiCategoryData}" itemValue="Id"
-							itemLabel="name" />
-					</form:select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-2 control-label"><spring:message
-						code="kpi.page.table.amount" /></label>
-				<div class="col-sm-10">
-					<form:input path="amount" class="form-control" />
-				</div>
-			</div>
-			<button type="submit" class="btn btn-md btn-primary btn-block">
-				<spring:message code="kpi.page.newkpi.button" />
-			</button>
-		</form:form>
 
+	<div class="container-fluid" style="padding-top: 55px;">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<spring:message code="kpi.page.newmetricpanel.heading" />
+					</div>
+					<div class="panel-body">
+						<form:form id="kpiForm" method="post" modelAttribute="kpiObj"
+							class="form-horizontal">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+							<div class="form-group col-xs-12">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label"><spring:message
+											code="kpi.page.table.plantName" /></label>
+									<div class="col-sm-10">
+										<form:select path="orgLevelData" items="${kpiTypeData}"
+											cssClass="form-control" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label"><spring:message
+											code="kpi.page.table.kpisubCat" /></label>
+									<div class="col-sm-10">
+										<form:select path="kpiSubCategory" class="form-control">
+											<form:options items="${kpiSubCategoryData}" itemValue="Id"
+												itemLabel="name" />
+										</form:select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label"><spring:message
+											code="kpi.page.table.kpiCat" /></label>
+									<div class="col-sm-10">
+										<form:select path="kpiCategory" class="form-control">
+											<form:options items="${kpiCategoryData}" itemValue="Id"
+												itemLabel="name" />
+										</form:select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label"><spring:message
+											code="kpi.page.table.amount" /></label>
+									<div class="col-sm-10">
+										<form:input path="amount" class="form-control" />
+									</div>
+								</div>
+								<button type="submit" class="btn btn-md btn-primary btn-block">
+									<spring:message code="kpi.page.newkpi.button" />
+								</button>
+							</div>
+						</form:form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

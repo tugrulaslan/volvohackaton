@@ -125,7 +125,7 @@
 										<p class="text-center">
 											<strong><spring:message
 													code="maindashboard.page.currval" />
-												${resultObj.currentValue}%</strong>
+												</strong>
 										</p>
 										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
 											<div class="gauge-arrow" data-percentage="80"></div>
@@ -142,7 +142,7 @@
 												</p>
 											</div>
 											<div class="col-xs-6">
-												<p class="text-right">80%</p>
+												<p class="text-right">${resultObj.targetThisYear}%</p>
 											</div>
 											<div class="col-xs-6">
 												<p class="text-right">2016</p>

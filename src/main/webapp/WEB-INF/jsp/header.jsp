@@ -20,6 +20,8 @@
 <spring:url value="/resources/cmgauge/js/cmGauge.js" var="cmGaugeJS" />
 
 <spring:url value="/resources/js/jquery-3.2.0.min.js" var="jqueryLib" />
+
+<spring:url value="/resources/images/volvo.png" var="volvoLogo" />
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,14 +54,16 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Tutorial Republic</a>
+				<a class="navbar-brand" href="#"><img src="${volvoLogo}" /></a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#"><spring:message code="security.login.text" /></a></li>
+					<li><a href="/kpi"><spring:message code="navbar.kpi" /></a></li>
+					<li><a href="/metrics"><spring:message
+								code="navbar.metrics" /></a></li>
+					<li><a href="/maindashboard"><spring:message
+								code="navbar.maindashboard" /></a></li>
 				</ul>
 			</div>
 		</div>

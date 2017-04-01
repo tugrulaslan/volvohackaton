@@ -1,6 +1,7 @@
 package com.volvo.controller;
 
 import com.volvo.domain.MainDashboardDomain;
+import com.volvo.entity.SafetyComponent;
 import com.volvo.service.DashboardService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,11 +73,9 @@ public class MainDashboardController {
 		MainDashboardDomain dashboard;
 		if (sessionObject != null) {
 			dashboard = sessionObject;
-			model.addAttribute("showDataPanel", "visibility:visible;");
 
 		} else {
 			dashboard = new MainDashboardDomain();
-			model.addAttribute("showDataPanel", "visibility:hidden;");
 		}
 		model.addAttribute("locale", LocaleContextHolder.getLocale());
 		model.addAttribute("dashboard", dashboard);
@@ -86,7 +85,7 @@ public class MainDashboardController {
 		model.addAttribute("plantRegionData", plantRegionData);
 		model.addAttribute("orgLevelData", orgLevelData);
 		httpSession.removeAttribute("dashboard");
-		dashboardService.getSafetyComponent(2017,"Wroclaw");
+		SafetyComponent safetyComponent = dashboardService.getSafetyComponent(2016,"Mexico");
 		return "maindashboard";
 	}
 

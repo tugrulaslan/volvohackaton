@@ -10,72 +10,75 @@ import java.util.Set;
 @Entity
 public class KPISubCategory {
 
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer Id;
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Integer Id;
 
-    @Column
-    @NotNull
-    String name;
+	@Column
+	@NotNull
+	String name;
 
-    @ManyToOne
-    @NotNull
-    KPICategory kpiCategory;
+	@ManyToOne
+	@NotNull
+	KPICategory kpiCategory;
 
-    @ManyToOne
-    @NotNull
-    Metric metric;
+	@ManyToOne
+	@NotNull
+	Metric metric;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "target", joinColumns = { @JoinColumn(name = "kpiSubCategory_Id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
-    @Fetch(FetchMode.SELECT)
-    Set<Target> target;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "target", joinColumns = { @JoinColumn(name = "kpiSubCategory_Id") }, inverseJoinColumns = {
+			@JoinColumn(name = "id") })
+	@Fetch(FetchMode.SELECT)
+	Set<Target> target;
 
-    public KPISubCategory() {
-    }
+	public KPISubCategory() {
+	}
 
+	public Integer getId() {
+		return Id;
+	}
 
+	public void setId(Integer id) {
+		Id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public KPICategory getKpiCategory() {
-        return kpiCategory;
-    }
+	public KPICategory getKpiCategory() {
+		return kpiCategory;
+	}
 
-    public void setKpiCategory(KPICategory kpiCategory) {
-        this.kpiCategory = kpiCategory;
-    }
+	public void setKpiCategory(KPICategory kpiCategory) {
+		this.kpiCategory = kpiCategory;
+	}
 
-    public Metric getMetric() {
-        return metric;
-    }
+	public Metric getMetric() {
+		return metric;
+	}
 
-    public void setMetric(Metric metric) {
-        this.metric = metric;
-    }
+	public void setMetric(Metric metric) {
+		this.metric = metric;
+	}
 
-    public Set<Target> getTarget() {
-        return target;
-    }
+	public Set<Target> getTarget() {
+		return target;
+	}
 
-    public void setTarget(Set<Target> target) {
-        this.target = target;
-    }
+	public void setTarget(Set<Target> target) {
+		this.target = target;
+	}
 
-    @Override
-    public String toString() {
-        return "KPISubCategory{" +
-                "Id=" + Id +
-                ", name='" + name + '\'' +
-                ", kpiCategory=" + kpiCategory +
-                ", metric=" + metric +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "KPISubCategory{" + "Id=" + Id + ", name='" + name + '\'' + ", kpiCategory=" + kpiCategory + ", metric="
+				+ metric + '}';
+	}
 }

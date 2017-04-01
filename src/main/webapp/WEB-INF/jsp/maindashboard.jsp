@@ -123,7 +123,9 @@
 								<div class="row">
 									<div class="col-xs-6">
 										<p class="text-center">
-											<strong>${dashboard.valueType}</strong>
+											<strong><spring:message
+													code="maindashboard.page.currval" />
+												${resultObj.currentValue}%</strong>
 										</p>
 										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
 											<div class="gauge-arrow" data-percentage="80"></div>
@@ -141,6 +143,18 @@
 											</div>
 											<div class="col-xs-6">
 												<p class="text-right">80%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2016</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">${resultObj.targetThisYearMinus1}</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2015</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">${resultObj.targetThisYearMinus2}</p>
 											</div>
 										</div>
 									</div>
@@ -171,7 +185,8 @@
 								<div class="row">
 									<div class="col-xs-6">
 										<p class="text-center">
-											<strong>${dashboard.valueType}</strong>
+											<strong><spring:message
+													code="maindashboard.page.currval" /> 48%</strong>
 										</p>
 										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
 											<div class="gauge-arrow" data-percentage="40"></div>
@@ -188,7 +203,19 @@
 												</p>
 											</div>
 											<div class="col-xs-6">
-												<p class="text-right">40%</p>
+												<p class="text-right">48%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2016</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">9.6%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2015</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">6.6%</p>
 											</div>
 										</div>
 									</div>
@@ -220,7 +247,8 @@
 								<div class="row">
 									<div class="col-xs-6">
 										<p class="text-center">
-											<strong>${dashboard.valueType}</strong>
+											<strong><spring:message
+													code="maindashboard.page.currval" /> 90%</strong>
 										</p>
 										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
 											<div class="gauge-arrow" data-percentage="15"></div>
@@ -237,7 +265,19 @@
 												</p>
 											</div>
 											<div class="col-xs-6">
-												<p class="text-right">15%</p>
+												<p class="text-right">90%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2016</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">3,5%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2015</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">${resultObj.targetThisYearMinus2}</p>
 											</div>
 										</div>
 									</div>
@@ -269,7 +309,8 @@
 								<div class="row">
 									<div class="col-xs-6">
 										<p class="text-center">
-											<strong>${dashboard.valueType}</strong>
+											<strong><spring:message
+													code="maindashboard.page.currval" /> 1 010 274</strong>
 										</p>
 										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
 											<div class="gauge-arrow" data-percentage="68"></div>
@@ -287,6 +328,18 @@
 											</div>
 											<div class="col-xs-6">
 												<p class="text-right">68%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2016</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">7.6%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2015</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2.3%</p>
 											</div>
 										</div>
 									</div>
@@ -311,9 +364,8 @@
 						<div id="environmentPanel" class="panel-collapse collapse in">
 							<div class="panel-body">
 								<strong><p class="text-center">
-										<spring:message
-											code="maindashboard.page.environment.panel.header"
-											arguments="${dashboard.valueType}" />
+										<spring:message code="maindashboard.page.currval" />
+										12 MR
 									</p></strong>
 								<!-- Environment Panel Content Begin -->
 								<div class="row">
@@ -339,6 +391,18 @@
 											<div class="col-xs-6">
 												<p class="text-right">77%</p>
 											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2016</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">${resultObj.targetThisYearMinus1}</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2015</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">7.6%</p>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -362,8 +426,8 @@
 						<div id="peoplePanel" class="panel-collapse collapse in">
 							<div class="panel-body">
 								<strong><p class="text-center">
-										<spring:message code="maindashboard.page.people.panel.header"
-											arguments="${dashboard.valueType}" />
+										<spring:message code="maindashboard.page.currval" />
+										95%
 									</p></strong>
 								<!-- People Panel Content Begin -->
 								<div class="row">
@@ -372,7 +436,7 @@
 											<strong>${dashboard.valueType}</strong>
 										</p>
 										<div id="gaugeDemo" class="gauge gauge-big gauge-green">
-											<div class="gauge-arrow" data-percentage="7"></div>
+											<div class="gauge-arrow" data-percentage="95"></div>
 										</div>
 									</div>
 									<div class="col-xs-6">
@@ -386,7 +450,19 @@
 												</p>
 											</div>
 											<div class="col-xs-6">
-												<p class="text-right">7%</p>
+												<p class="text-right">95%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2016</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">6.8%</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">2015</p>
+											</div>
+											<div class="col-xs-6">
+												<p class="text-right">9.6%</p>
 											</div>
 										</div>
 									</div>
@@ -401,9 +477,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	$(function () {
-		$('#gaugeDemo .gauge-arrow').cmGauge();
-	});
-</script>
+		$(function() {
+			$('#gaugeDemo .gauge-arrow').cmGauge();
+		});
+	</script>
 </body>
 </html>

@@ -3,6 +3,9 @@ package com.volvo.controller;
 import com.volvo.domain.MainDashboardDomain;
 import com.volvo.entity.SafetyComponent;
 import com.volvo.service.DashboardService;
+
+import io.swagger.models.auth.In;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -71,13 +74,23 @@ public class MainDashboardController {
 		logger.info("creating index page");
 		MainDashboardDomain sessionObject = (MainDashboardDomain) httpSession.getAttribute("dashboard");
 		MainDashboardDomain dashboard;
+		SafetyComponent safetyComponent;
 		if (sessionObject != null) {
 			dashboard = sessionObject;
-
+			model.addAttribute("pastYearData", getPastYears(dashboard.getYear()));
+			safetyComponent = dashboardService.getSafetyComponent(Integer.parseInt(dashboard.getYear()),
+					dashboard.getOrgLevel());
 		} else {
 			dashboard = new MainDashboardDomain();
+			dashboard.setYear("2017");
+			dashboard.setMonth("January");
+			dashboard.setPlantRegion("BRA");
+			dashboard.setOrgLevel("WROCLAW");
+			dashboard.setValueType("FULLYEAR");
+			model.addAttribute("pastYearData", getPastYears(dashboard.getYear()));
+			safetyComponent = dashboardService.getSafetyComponent(2017, "Wroclaw");
 		}
-		SafetyComponent safetyComponent = dashboardService.getSafetyComponent(2017, "Wroclaw");
+
 		model.addAttribute("locale", LocaleContextHolder.getLocale());
 		model.addAttribute("dashboard", dashboard);
 		model.addAttribute("yearData", yearData);
@@ -87,7 +100,7 @@ public class MainDashboardController {
 		model.addAttribute("orgLevelData", orgLevelData);
 		model.addAttribute("resultObj", safetyComponent);
 		httpSession.removeAttribute("dashboard");
-		dashboardService.getSafetyComponent(2017,"Wroclaw");
+		dashboardService.getSafetyComponent(2017, "Wroclaw");
 		return "maindashboard";
 	}
 
@@ -97,6 +110,12 @@ public class MainDashboardController {
 		logger.info("retrieved object " + dashboard.toString());
 		httpSession.setAttribute("dashboard", dashboard);
 		return "redirect:/maindashboard";
+	}
+
+	private static String[] getPastYears(String year) {
+		int val = Integer.parseInt(year);
+		String[] data = { String.valueOf(val - 1), String.valueOf(val - 2) };
+		return data;
 	}
 
 }

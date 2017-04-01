@@ -23,7 +23,7 @@ public class AppDAOImpl implements AppDAO {
 	@Override
 	public <T extends AbstractEntity> void save(T t) {
 		Session session = sessionFactory.getCurrentSession();
-		session.persist(t);
+		session.saveOrUpdate(t);
 		logger.info("saved the object " + t);
 	}
 

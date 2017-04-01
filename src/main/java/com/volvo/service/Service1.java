@@ -43,6 +43,6 @@ public class Service1 implements Service1I{
 
     @Override
     public int count() {
-        return targetDAO.count();
+        return (int) targetDAO.count();
     }
 }

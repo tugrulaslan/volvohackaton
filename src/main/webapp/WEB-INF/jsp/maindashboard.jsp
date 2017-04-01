@@ -2,33 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <html>
 <head>
-<title><spring:message code="maindashboard.page.title" /></title>
-<spring:url value="/resources/bootstrap/css/bootstrap.css"
-	var="bootstrapCSS" />
-<spring:url value="/resources/bootstrap/js/bootstrap.js"
-	var="bootstrapJS" />
-<spring:url value="/resources/js/jquery-3.2.0.min.js" var="jqueryLib" />
+
 <script>
-	function populate($val) {
+	function populate() {
 		var form = document.getElementById("dashboardForm");
 		form.submit();
 	}
 </script>
-<style type="text/css">
-.panel-heading a:after {
-	font-family: 'Glyphicons Halflings';
-	content: "\e114";
-	float: right;
-	color: grey;
-}
-
-.panel-heading a.collapsed:after {
-	content: "\e080";
-}
-</style>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,8 +18,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<!-- Bootstrap core CSS -->
-<link href="${bootstrapCSS}" rel="stylesheet">
+
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -45,33 +26,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
 <body>
-
-	<nav id="myNavbar"
-		class="navbar navbar-default navbar-inverse navbar-fixed-top"
-		role="navigation">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbarCollapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Tutorial Republic</a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#"><spring:message code="security.login.text" /></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<div class="jumbotron">
 		<div class="container-fluid">
 			<div class="panel-group">
@@ -130,7 +86,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid">
+	<div class="container-fluid" style="${showDataPanel}">
 		<div class="panel-group" id="accordion">
 			<div class="row">
 				<div class="col-xs-4">
@@ -149,35 +105,35 @@
 									<b><spring:message
 											code="maindashboard.page.safety.panel.header" /></b>
 								</center>
-														<div class="container-fluid">
-							<div class="row">
-								<!-- Vertical Alignment -->
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<!-- Horizontal Alignment -->
-											<div class="col-lg-12">${dashboard.valueType}</div>
-											<div class="col-lg-12">fancy bar goes here</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-lg-12">
-												<spring:message code="maindashboard.page.avgyear" />
-											</div>
-											<div class="col-lg-12">
-												<div class="col-lg-6">
-													<spring:message code="maindashboard.page.target" />
+								<div class="container-fluid">
+									<div class="row">
+										<!-- Vertical Alignment -->
+										<div class="col-lg-6">
+											<div class="container-fluid">
+												<div class="row">
+													<!-- Horizontal Alignment -->
+													<div class="col-lg-12">${dashboard.valueType}</div>
+													<div class="col-lg-12">fancy bar goes here</div>
 												</div>
-												<div class="col-lg-6">TARGET%</div>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="container-fluid">
+												<div class="row">
+													<div class="col-lg-12">
+														<spring:message code="maindashboard.page.avgyear" />
+													</div>
+													<div class="col-lg-12">
+														<div class="col-lg-6">
+															<spring:message code="maindashboard.page.target" />
+														</div>
+														<div class="col-lg-6">TARGET%</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
 							</div>
 						</div>
 					</div>
@@ -367,7 +323,8 @@
 									<div class="container-fluid">
 										<div class="row">
 											<div class="col-lg-12">
-												<spring:message  arguments="${dashboard.valueType}" code="maindashboard.page.mr"/>
+												<spring:message arguments="${dashboard.valueType}"
+													code="maindashboard.page.mr" />
 											</div>
 											<div class="col-lg-12">
 												<div class="col-lg-6">
@@ -437,11 +394,5 @@
 	</div>
 	</div>
 	</div>
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="${jqueryLib}"></script>
-	<script src="${bootstrapJS}"></script>
 </body>
 </html>

@@ -1,49 +1,36 @@
 package com.volvo.entity;
 
-import java.util.HashSet;
+import javax.persistence.*;
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User extends AbstractEntity {
 
 	@Id
-	@Column(name = "username", unique = true, nullable = false, length = 45)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name = "username")
 	private String username;
 
-	@Column(name = "password", nullable = false, length = 60)
+	@Column(name = "password")
 	private String password;
 
-	@Column(name = "enabled", nullable = false)
-	private boolean enabled;
+	@ManyToMany
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<UserRole> userRole = new HashSet<UserRole>(0);
-
-	public User() {
+	public Long getId() {
+		return id;
 	}
 
-	public User(String username, String password, boolean enabled) {
-		this.username = username;
-		this.password = password;
-		this.enabled = enabled;
-	}
-
-	public User(String username, String password, boolean enabled, Set<UserRole> userRole) {
-		this.username = username;
-		this.password = password;
-		this.enabled = enabled;
-		this.userRole = userRole;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 
 	public void setUsername(String username) {
@@ -51,27 +38,18 @@ public class User extends AbstractEntity {
 	}
 
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public boolean isEnabled() {
-		return this.enabled;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
-
-	public Set<UserRole> getUserRole() {
-		return this.userRole;
-	}
-
-	public void setUserRole(Set<UserRole> userRole) {
-		this.userRole = userRole;
-	}
-
 }

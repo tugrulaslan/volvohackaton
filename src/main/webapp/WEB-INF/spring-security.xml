@@ -4,22 +4,27 @@
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/" access="permitAll" />
-		<intercept-url pattern="/home" access="permitAll" />
-		<intercept-url pattern="/admin**" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/registration" access="permitAll" />
+		<intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
 		<!-- <intercept-url pattern="/rest/**" access="hasRole('ADMIN')" /> -->
+		<form-login login-page="/login" default-target-url="/maindashboard"
+			authentication-failure-url="/login?error" username-parameter="username"
+			password-parameter="password" />
 
-		<intercept-url pattern="/dba**"
-			access="hasRole('ADMIN') and hasRole('DBA')" />
-		<form-login authentication-failure-url="/Access_Denied" />
+		<logout logout-success-url="/login?logout" />
 	</http>
 
-	<authentication-manager>
-		<authentication-provider user-service-ref="customUserDetailService">
-			<password-encoder hash="bcrypt" />
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="userDetailsServiceImpl">
+			<password-encoder ref="encoder"></password-encoder>
 		</authentication-provider>
 	</authentication-manager>
 
-
-
+	<beans:bean id="userDetailsServiceImpl" class="com.volvo.service.UserDetailsServiceImpl"></beans:bean>
+	
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg name="strength" value="11" />
+	</beans:bean>
 </beans:beans>

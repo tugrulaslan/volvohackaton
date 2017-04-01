@@ -1,6 +1,9 @@
 package com.volvo.service;
 
 import com.volvo.dao.AppDAO;
+import com.volvo.entity.AbstractEntity;
+import com.volvo.entity.User;
+
 import io.swagger.annotations.Api;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,16 @@ public class AppServiceImpl implements AppService {
 
 	@Autowired
 	private AppDAO appDAO;
+	
+	@Override
+	public <T extends AbstractEntity> void save(T t) {
+		appDAO.save(t);
+	}
+	
+	@Override
+	public User findByUserName(String username) {
+		return appDAO.findByUserName(username);
+	}
 
 	@GET
 	@Path("/dummy")
@@ -32,5 +45,9 @@ public class AppServiceImpl implements AppService {
 	public Response dummyService() {
 		return Response.status(200).entity("dummyresponse").build();
 	}
+
+	
+
+	
 
 }

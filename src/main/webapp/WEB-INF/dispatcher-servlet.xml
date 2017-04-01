@@ -18,9 +18,6 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd
 	<context:component-scan base-package="com.volvo" />
 	<context:annotation-config />
 
-	<!-- Inject Custom UserDetailService -->
-	<bean id="customUserDetailService" class="com.volvo.security.CustomUserDetailService" />
-
 	<!-- Property loader for database -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
@@ -46,6 +43,7 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd
 				<prop key="hibernate.pool_size">"${orm.pool_size}</prop>
 				<prop key="hibernate.show_sql">${orm.show_sql}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${orm.hbm2ddl.auto}</prop>
+				<prop key="hibernate.enable_lazy_load_no_trans">${orm.enable.lazy.load}</prop>
 			</props>
 		</property>
 	</bean>

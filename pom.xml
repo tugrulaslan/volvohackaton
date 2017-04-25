@@ -190,8 +190,6 @@
 						<warSourceDirectory>WebContent</warSourceDirectory>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 						<warName>${project.artifactId}</warName>
-						<directory>src/main/resources</directory>
-						<filtering>true</filtering>
 					</configuration>
 				</plugin>
 			</plugins>

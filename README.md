@@ -16,3 +16,5 @@ mvnDebug clean install tomcat7:run
 
 Swagger UI 2.1.4
 http://localhost:9090/swagger/index.html
+
+CREATE SCHEMA `volvodb` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
